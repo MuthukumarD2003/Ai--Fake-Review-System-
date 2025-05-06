@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Set the API key as an environment variable
-os.environ["GROQ_API_KEY"] = "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"
+os.environ["GROQ_API_KEY"] = "your key"
 
 
 @app.route('/')
