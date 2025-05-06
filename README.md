@@ -76,15 +76,16 @@ The system consists of a Flask web application that allows users to input a Goog
 5.  The results will be displayed on the page, showing the total reviews analyzed, the count of likely fake reviews, the count of likely genuine reviews, and the analysis for each individual review.
 
 ## Project Structure
+
 Ai--Fake-Review-System/
 ├── static/
-│   └── style.css         # Basic CSS for styling the web page
+│   └── style.css
 ├── templates/
-│   └── index.html        # HTML template for the main page
-├── app.py                # Flask application code
-├── review_analyzer.py    # Functions for fetching and analyzing reviews
-├── requirements.txt      # List of Python dependencies
-└── README.md             # This README file
+│   └── index.html
+├── app.py
+├── review_analyzer.py
+├── requirements.txt
+└── README.md
 
 ## Disclaimer
 
