@@ -76,3 +76,28 @@ The system consists of a Flask web application that allows users to input a Goog
 5.  The results will be displayed on the page, showing the total reviews analyzed, the count of likely fake reviews, the count of likely genuine reviews, and the analysis for each individual review.
 
 ## Project Structure
+Ai--Fake-Review-System/
+├── static/
+│   └── style.css         # Basic CSS for styling the web page
+├── templates/
+│   └── index.html        # HTML template for the main page
+├── app.py                # Flask application code
+├── review_analyzer.py    # Functions for fetching and analyzing reviews
+├── requirements.txt      # List of Python dependencies
+└── README.md             # This README file
+
+## Disclaimer
+
+The accuracy of fake review detection depends on the capabilities of the underlying Llama large language model and the quality of the reviews. This system provides an analysis based on patterns and indicators, but it may not be definitive.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Contributing
+
+Contributions to this project are welcome. Please feel free to submit pull requests or open issues for any bugs or feature requests.
+
+## Author
+
+[MuthukumarD2003](https://github.com/MuthukumarD2003)
