@@ -75,18 +75,6 @@ The system consists of a Flask web application that allows users to input a Goog
 4.  Click the "Analyze" button.
 5.  The results will be displayed on the page, showing the total reviews analyzed, the count of likely fake reviews, the count of likely genuine reviews, and the analysis for each individual review.
 
-## Project Structure
-
-Ai--Fake-Review-System/
-├── static/
-│   └── style.css
-├── templates/
-│   └── index.html
-├── app.py
-├── review_analyzer.py
-├── requirements.txt
-└── README.md
-
 ## Disclaimer
 
 The accuracy of fake review detection depends on the capabilities of the underlying Llama large language model and the quality of the reviews. This system provides an analysis based on patterns and indicators, but it may not be definitive.
