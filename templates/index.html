@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Store Review Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI-Powered Play Store Review Analyzer</h1>
+            <p>Detect potentially fake reviews in Play Store apps</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <form id="analyzeForm" method="POST" action="/analyze">
+                    <div class="form-group">
+                        <label for="app_url">Enter Play Store App URL:</label>
+                        <input type="url" id="app_url" name="app_url" placeholder="https://play.google.com/store/apps/details?id=com.example.app" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="review_count">Number of reviews to analyze:</label>
+                        <input type="number" id="review_count" name="review_count" min="1" max="100" value="20">
+                    </div>
+                    <button type="submit" id="analyzeBtn">Analyze Reviews</button>
+                </form>
+            </div>
+
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing reviews... This may take a moment.</p>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>Analysis Results</h2>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <h3>Total Reviews Analyzed</h3>
+                        <p id="totalReviews">0</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Potentially Fake Reviews</h3>
+                        <p id="fakeReviews">0</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Genuine Reviews</h3>
+                        <p id="genuineReviews">0</p>
+                    </div>
+                </div>
+
+                <div class="review-list-container">
+                    <h3>Review Analysis</h3>
+                    <div id="reviewsList" class="reviews-list"></div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
