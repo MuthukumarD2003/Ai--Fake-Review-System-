@@ -1,96 +1,108 @@
 ```markdown
-# AI Fake Review Detection System
+# AI-Powered Fake Review Detection System
 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![Flask](https://img.shields.io/badge/Flask-%E2%98%AB%EF%B8%8F-brightgreen.svg)](https://flask.palletsprojects.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/MuthukumarD2003/Ai--Fake-Review-System/graphs/commit-activity)
 
-A web application that analyzes Google Play Store reviews using AI to detect potentially fake or suspicious reviews.
+This project implements an AI-powered system to detect fake reviews of Android applications listed on the Google Play Store. It leverages the power of a large language model (LLM), specifically the Llama family of models accessed via an API, to analyze the content of user reviews and identify potentially inauthentic ones.
 
-## Features
+## Overview
 
-- Scrape reviews from any Google Play Store app
-- Analyze reviews using Llama LLM
-- Detect fake reviews based on multiple indicators
-- Simple web interface with results visualization
-- Configurable number of reviews to analyze
+The system consists of a Flask web application that allows users to input a Google Play Store app URL and specify the number of reviews they want to analyze. The backend then fetches these reviews, utilizes the Llama LLM to assess their authenticity, and presents a summary of the analysis, including the total number of reviews, the count of likely fake reviews, and the count of likely genuine reviews. Individual review analysis results are also provided.
 
-## How It Works
+## Key Features
 
-1. Extracts reviews from Google Play Store using `google-play-scraper`
-2. Analyzes each review using Llama 3.3B model via Groq API
-3. Checks for indicators of fake reviews:
-   - Generic/vague language
-   - Excessive praise without substance
-   - Unnatural language patterns
-   - Irrelevant content
-   - SEO manipulation patterns
-   - Extremely short 5-star reviews
-4. Provides analysis results with explanations
+* **Easy-to-use Web Interface:** A simple web form allows users to easily submit app URLs for analysis.
+* **Google Play Store Integration:** Fetches reviews directly from the provided Google Play Store URL.
+* **Llama LLM Powered Analysis:** Employs a Llama large language model (via API) to intelligently identify patterns indicative of fake reviews.
+* **Detailed Analysis:** Provides a breakdown of the total reviews, the number of likely fake reviews, and the number of likely genuine reviews.
+* **Individual Review Assessment:** Shows the LLM's analysis result (fake or genuine) for each reviewed comment, along with a brief explanation.
+* **Adjustable Review Count:** Users can specify the number of reviews to analyze (up to a reasonable limit).
 
-## Installation
+## Technologies Used
 
-1. Clone the repository:
-```bash
-git clone https://github.com/your-username/Ai-Fake-Review-System.git
-cd Ai-Fake-Review-System
-```
+* **Python:** The primary programming language.
+* **Flask:** A micro web framework for building the user interface and API endpoints.
+* **`google-play-scraper`:** A library to scrape app information and reviews from the Google Play Store.
+* **`requests`:** A library for making HTTP requests to interact with the LLM API.
+* **Beautiful Soup (`bs4`):** Used for basic HTML parsing (though primarily for extracting the app ID).
+* **Llama Large Language Model (via API):** The core AI model for analyzing review text.
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+## Setup and Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/MuthukumarD2003/Ai--Fake-Review-System.git](https://github.com/MuthukumarD2003/Ai--Fake-Review-System.git)
+    cd Ai--Fake-Review-System
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Set the Llama API Key:**
+    This project utilizes an API to access the Llama large language model. You need to obtain an API key from a provider that offers access to Llama models (e.g., Groq). Once you have the key, set it as an environment variable named `GROQ_API_KEY`.
+
+    On Linux/macOS:
+    ```bash
+    export GROQ_API_KEY="your_llama_api_key_here"
+    ```
+
+    On Windows (Command Prompt):
+    ```bash
+    set GROQ_API_KEY="your_llama_api_key_here"
+    ```
+
+    On Windows (PowerShell):
+    ```powershell
+    $env:GROQ_API_KEY = "your_llama_api_key_here"
+    ```
+
+4.  **Run the Flask application:**
+    ```bash
+    python app.py
+    ```
+
+    This will start the development server, usually accessible at `http://127.0.0.1:5000/`.
 
 ## Usage
 
-1. Run the Flask application:
-```bash
-python app.py
-```
+1.  Open your web browser and navigate to `http://127.0.0.1:5000/`.
+2.  In the form, paste the URL of the Google Play Store app you want to analyze.
+3.  Enter the number of reviews you want to analyze (default is 20, maximum is 100).
+4.  Click the "Analyze" button.
+5.  The results will be displayed on the page, showing the total reviews analyzed, the count of likely fake reviews, the count of likely genuine reviews, and the analysis for each individual review.
 
-2. Open your browser to:
-```
-http://localhost:5000
-```
-
-3. Enter a Google Play Store app URL and number of reviews to analyze
-
-4. View the analysis results showing genuine vs fake reviews
-
-## Configuration
-
-- Modify `review_count` in the web form to analyze more reviews (max 100)
-- Adjust `temperature` parameter in `review_analyzer.py` for more/less strict analysis
-- Change the model in `review_analyzer.py` if you want to use a different LLM
-
-## File Structure
+## Project Structure
 
 ```
-Ai-Fake-Review-System/
-├── app.py                # Main Flask application
-├── review_analyzer.py    # Review scraping and analysis logic
-├── requirements.txt      # Python dependencies
-├── static/               # Static files (CSS, JS)
-│   └── ...
-├── templates/            # HTML templates
-│   └── index.html
-└── README.md             # This file
+Ai--Fake-Review-System/
+├── static/
+│   └── style.css         # Basic CSS for styling the web page
+├── templates/
+│   └── index.html        # HTML template for the main page
+├── app.py                # Flask application code
+├── review_analyzer.py    # Functions for fetching and analyzing reviews
+├── requirements.txt      # List of Python dependencies
+└── README.md             # This README file
 ```
 
-## Dependencies
+## Disclaimer
 
-- Flask
-- google-play-scraper
-- requests
-- beautifulsoup4
-- python-dotenv
+The accuracy of fake review detection depends on the capabilities of the underlying Llama large language model and the quality of the reviews. This system provides an analysis based on patterns and indicators, but it may not be definitive.
 
-## Limitations
+## License
 
-- Currently only supports Google Play Store apps
-- Limited to 100 reviews per analysis
-- API rate limits may apply with Groq
-- Accuracy depends on the LLM's capability to detect fake reviews
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or pull request for any improvements.
+Contributions to this project are welcome. Please feel free to submit pull requests or open issues for any bugs or feature requests.
+
+## Author
+
+[MuthukumarD2003](https://github.com/MuthukumarD2003)
+```
